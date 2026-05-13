@@ -24,7 +24,10 @@ jobs:
     if: ${{ !github.event.pull_request.draft }}
     name: "Linter"
     runs-on: penpot-runner-02
-    container: penpotapp/devenv:latest
+    container:
+      image: penpotapp/devenv:latest
+      volumes:
+        - /var/cache/maven-repo:/root/.m2
 
     steps:
       - name: Checkout repository
@@ -84,7 +87,10 @@ jobs:
     if: ${{ !github.event.pull_request.draft }}
     name: "Common Tests"
     runs-on: penpot-runner-02
-    container: penpotapp/devenv:latest
+    container:
+      image: penpotapp/devenv:latest
+      volumes:
+        - /var/cache/maven-repo:/root/.m2
 
     steps:
       - name: Checkout repository
@@ -99,7 +105,10 @@ jobs:
     if: ${{ !github.event.pull_request.draft }}
     name: Plugins Runtime Linter & Tests
     runs-on: penpot-runner-02
-    container: penpotapp/devenv:latest
+    container:
+      image: penpotapp/devenv:latest
+      volumes:
+        - /var/cache/maven-repo:/root/.m2
 
     steps:
       - uses: actions/checkout@v6
@@ -150,7 +159,10 @@ jobs:
     if: ${{ !github.event.pull_request.draft }}
     name: "Frontend Tests"
     runs-on: penpot-runner-02
-    container: penpotapp/devenv:latest
+    container:
+      image: penpotapp/devenv:latest
+      volumes:
+        - /var/cache/maven-repo:/root/.m2
 
     steps:
       - name: Checkout repository
@@ -172,7 +184,10 @@ jobs:
     if: ${{ !github.event.pull_request.draft }}
     name: "Render WASM Tests"
     runs-on: penpot-runner-02
-    container: penpotapp/devenv:latest
+    container:
+      image: penpotapp/devenv:latest
+      volumes:
+        - /var/cache/maven-repo:/root/.m2
 
     steps:
       - name: Checkout repository
@@ -197,7 +212,10 @@ jobs:
     if: ${{ !github.event.pull_request.draft }}
     name: "Backend Tests"
     runs-on: penpot-runner-02
-    container: penpotapp/devenv:latest
+    container:
+      image: penpotapp/devenv:latest
+      volumes:
+        - /var/cache/maven-repo:/root/.m2
 
     services:
       postgres:
@@ -237,7 +255,10 @@ jobs:
     if: ${{ !github.event.pull_request.draft }}
     name: "Library Tests"
     runs-on: penpot-runner-02
-    container: penpotapp/devenv:latest
+    container:
+      image: penpotapp/devenv:latest
+      volumes:
+        - /var/cache/maven-repo:/root/.m2
 
     steps:
       - name: Checkout repository
@@ -252,7 +273,10 @@ jobs:
     if: ${{ !github.event.pull_request.draft }}
     name: "Build Integration Bundle"
     runs-on: penpot-runner-02
-    container: penpotapp/devenv:latest
+    container:
+      image: penpotapp/devenv:latest
+      volumes:
+        - /var/cache/maven-repo:/root/.m2
 
     steps:
       - name: Checkout repository
@@ -273,7 +297,10 @@ jobs:
     if: ${{ !github.event.pull_request.draft }}
     name: "Integration Tests 1/3"
     runs-on: penpot-runner-02
-    container: penpotapp/devenv:latest
+    container:
+      image: penpotapp/devenv:latest
+      volumes:
+        - /var/cache/maven-repo:/root/.m2
     needs: build-integration
 
     steps:
@@ -304,7 +331,10 @@ jobs:
     if: ${{ !github.event.pull_request.draft }}
     name: "Integration Tests 2/3"
     runs-on: penpot-runner-02
-    container: penpotapp/devenv:latest
+    container:
+      image: penpotapp/devenv:latest
+      volumes:
+        - /var/cache/maven-repo:/root/.m2
     needs: build-integration
 
     steps:
@@ -335,7 +365,10 @@ jobs:
     if: ${{ !github.event.pull_request.draft }}
     name: "Integration Tests 3/3"
     runs-on: penpot-runner-02
-    container: penpotapp/devenv:latest
+    container:
+      image: penpotapp/devenv:latest
+      volumes:
+        - /var/cache/maven-repo:/root/.m2
     needs: build-integration
 
     steps:
